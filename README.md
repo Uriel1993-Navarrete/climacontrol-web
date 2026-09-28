@@ -1,39 +1,36 @@
-# AirePro Climas — Sitio Web
+# Ing. Jonathan Perez — Servicios técnicos (electricidad y climas)
 
-Página web estática (HTML, CSS y JavaScript vanilla) para un negocio de mantenimiento, reparación e instalación de aires acondicionados y minisplits.
+Sitio de una sola página en Angular 21 (componentes standalone, signals, OnPush, CSS plano, sin SSR) para un negocio de mantenimiento, reubicación, instalación y reparación de climas 110V y 220V. Convierte visitas en cotizaciones por WhatsApp (botón flotante y formulario que arma el mensaje y abre `wa.me`).
 
-## Estructura
-
-```
-climacontrol-web/
-├── index.html        # Página principal (hero, servicios, nosotros, testimonios, contacto)
-├── css/
-│   └── style.css     # Estilos, variables de tema y responsive
-├── js/
-│   └── main.js        # Menú móvil, animaciones al hacer scroll, contador de estadísticas y validación del formulario
-└── img/               # Recursos gráficos
-```
-
-## Secciones incluidas
-
-- Encabezado con barra de contacto y menú responsive
-- Hero con llamados a la acción y estadísticas animadas
-- Catálogo de servicios (mantenimiento, reparación, instalación, recarga de gas, limpieza, contratos)
-- Sección "Nosotros" con lista de beneficios
-- Testimonios de clientes
-- Formulario de contacto con validación básica en el cliente
-- Botón flotante de WhatsApp y botón "volver arriba"
-
-## Cómo verlo localmente
-
-Al ser un sitio estático, basta abrir `index.html` en el navegador, o servirlo con cualquier servidor estático, por ejemplo:
+## Desarrollo
 
 ```bash
-npx serve .
+npm ci            # o npm install
+npm start         # http://localhost:4200
+npm run build     # salida en dist/climacontrol-web/browser
+npm test -- --watch=false
 ```
 
-## Personalización
+Requiere Node 22 y npm 10. El archivo `.npmrc` activa `legacy-peer-deps` por un fallo de npm 10 al resolver peers de vitest/jsdom.
 
-- Cambia el nombre del negocio, teléfono, correo y dirección directamente en `index.html`.
-- Ajusta colores y tipografías en las variables `:root` de `css/style.css`.
-- Los textos de servicios y testimonios son de ejemplo y deben reemplazarse con información real del negocio.
+## Qué editar
+
+| Qué | Dónde |
+|-----|-------|
+| Nombre del negocio, número de WhatsApp, horarios, zona, marcas, mensaje genérico | `src/app/config/site.config.ts` |
+| Servicios, descripciones e imagen de cada tarjeta | `src/app/data/services.ts` |
+| Fotos | `public/img/` (reemplaza el archivo con el mismo nombre, o cambia la ruta en `services.ts`) |
+| Colores y tipografía | variables `:root` en `src/styles.css` |
+
+- El número de WhatsApp va solo con dígitos y lada (por ejemplo `5215512345678`). Todos los enlaces lo leen de `site.config.ts`.
+- Los valores actuales (zona, horarios, marcas, imágenes) son **placeholders** y deben reemplazarse antes de publicar.
+
+## Despliegue en Netlify
+
+1. Sube el repositorio a GitHub y en Netlify elige "Import from Git".
+2. `netlify.toml` ya define: build `npm run build`, publish `dist/climacontrol-web/browser` y la redirección `/*` a `/index.html` (200).
+3. Cada push a la rama configurada redespliega el sitio.
+
+## Fuera del alcance del MVP
+
+Video (segunda etapa), backend, correo y pagos.
