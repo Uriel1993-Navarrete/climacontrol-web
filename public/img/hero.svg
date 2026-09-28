@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 420" width="560" height="420" role="img" aria-label="Clima enfriando una habitación (imagen de ejemplo)">
+  <rect width="560" height="420" rx="24" fill="#cfeaf4"/>
+  <rect x="90" y="90" width="380" height="110" rx="18" fill="#fff" stroke="#0a7ea4" stroke-width="6"/>
+  <rect x="115" y="165" width="330" height="12" rx="6" fill="#0a7ea4" opacity=".5"/>
+  <circle cx="420" cy="125" r="8" fill="#128c4a"/>
+  <g stroke="#0a7ea4" stroke-width="6" stroke-linecap="round" fill="none" opacity=".7">
+    <path d="M150 230q-14 30 0 60t0 60"/><path d="M230 230q-14 30 0 60t0 60"/><path d="M310 230q-14 30 0 60t0 60"/><path d="M390 230q-14 30 0 60t0 60"/>
+  </g>
+  <text x="280" y="405" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#465866">Imagen de ejemplo: reemplázala en public/img/hero.svg</text>
+</svg>
